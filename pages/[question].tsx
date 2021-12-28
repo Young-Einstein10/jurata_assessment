@@ -1,28 +1,32 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import HomePage from "../components/HomePage";
 import { AnswerProps } from "../components/HomePage/types";
 import { Layout } from "../components/Layout";
 import { fetchAnswers } from "../utils/apollo-client";
 
-const Question: NextPage = ({ result }: AnswerProps) => {
+const Question: NextPage = ({ data }: AnswerProps) => {
   return (
     <Layout>
-      <HomePage data={result} />
+      <HomePage data={data} />
     </Layout>
   );
 };
 
 export default Question;
 
-export async function getServerSideProps(context) {
-  const { question } = context.params;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { question } = context.params as { question: string };
 
   const { data } = await fetchAnswers(question);
+  const result = { question, ...data?.askMe } as AnswerProps;
 
   return {
     props: {
-      result: { question, ...data?.askMe },
+      data: result,
     }, // will be passed to the page component as props
   };
-}
+};

@@ -8,7 +8,7 @@ export const Layout: FC<{ title?: string }> = ({ children, title }) => {
   return (
     <>
       <Head>
-        <title>{title || "Home"}</title>
+        <title>{title || "Home | AskMe"}</title>
         <meta
           name="description"
           content="Ask any question you have and find an answer immediately."

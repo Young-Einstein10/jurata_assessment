@@ -31,13 +31,28 @@ const restLink = new RestLink({
 // Setup your client
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Mutation: {
+        queryType: true,
+        mutationType: true,
+        subscriptionType: true,
+      },
+    },
+  }),
 });
 
 export const fetchAnswers = async (query: string) => {
   const res = await client.mutate({
     variables: { input: { query } },
     mutation: MUTATION,
+    update: (cache, { data }) => {
+      cache.writeQuery({
+        query: MUTATION,
+        data: data,
+        variables: { input: { query } },
+      });
+    },
   });
 
   return res;

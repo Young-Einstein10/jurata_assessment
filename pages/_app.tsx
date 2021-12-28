@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
+import { appWithTranslation } from "next-i18next";
 import theme from "../utils/theme";
 
 import "@fontsource/merriweather";
@@ -13,4 +14,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

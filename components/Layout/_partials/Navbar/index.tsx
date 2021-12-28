@@ -21,15 +21,9 @@ const Navbar = () => {
             </a>
           </Link>
 
-          <HStack spacing={5}>
-            <Link href="#">
-              <a>
-                <Text fontWeight="bold">Login</Text>
-              </a>
-            </Link>
-
+          <Box>
             <LangSwitcher />
-          </HStack>
+          </Box>
         </Flex>
       </Container>
     </Box>
