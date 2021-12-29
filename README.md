@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AskMe
+
+![AskMe](public/askme.png)
+
+This is a simple web application which users can use in finding answers to any question they have.
+
+## Technologies
+
+- [Next.js](https://nextjs.org)
+- [Chakra UI](https://chakra-ui.com)
+- [Micro Answer REST API](https://m3o.com/answer)
 
 ## Getting Started
 
-First, run the development server:
+- Clone this repository into your local machine:
 
-```bash
-npm run dev
-# or
-yarn dev
+```git
+git clone https://github.com/Young-Einstein10/jurata_assessment.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Install dependencies:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```git
+yarn install or npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- You will need to create an account on [Micro Answer REST API](https://m3o.com/answer) to get an API KEY which you then add to the `.env` file in the root folder like so.
 
-## Learn More
+```env
+NEXT_PUBLIC_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
 
-To learn more about Next.js, take a look at the following resources:
+- To start the application:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```git
+yarn dev or npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Open [http://localhost:3000](http://localhost:3000) in your browser and type in aby question you have in the search bar.
 
-## Deploy on Vercel
+![AskMe1](public/askme1.png)
+
+## Deployment
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Contributing
+
+Pull requests are welcome. File an issue for ideas, conversation or feedback.
+
+## Author
+
+- Abdulrahman Yusuf
+
+## License
+
+- This project is licensed under the [MIT Public License](LICENSE)

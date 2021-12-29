@@ -31,19 +31,12 @@ const restLink = new RestLink({
 // Setup your client
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache({
-    typePolicies: {
-      Mutation: {
-        queryType: true,
-        mutationType: true,
-        subscriptionType: true,
-      },
-    },
-  }),
+  cache: new InMemoryCache(),
 });
 
 export const fetchAnswers = async (query: string) => {
   const res = await client.mutate({
+    fetchPolicy: "network-only",
     variables: { input: { query } },
     mutation: MUTATION,
     update: (cache, { data }) => {
