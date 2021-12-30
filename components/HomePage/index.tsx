@@ -10,6 +10,7 @@ import {
   SkeletonCircle,
   SkeletonText,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 import Answer from "./_partials/Answer";
 import { Search2Icon } from "@chakra-ui/icons";
@@ -17,12 +18,13 @@ import { AnswerProps } from "./types";
 import { fetchAnswers } from "../../utils/apollo-client";
 import { useTranslation } from "next-i18next";
 
-const HomePage = ({ data }: AnswerProps) => {
+const HomePage = ({ data }: { data?: AnswerProps }) => {
   const [value, setValue] = useState("");
   const [result, setResult] = useState<AnswerProps>();
   const [loading, setLoading] = useState(false);
 
   const { t } = useTranslation("common");
+  const toast = useToast();
 
   useEffect(() => {
     if (data) {
@@ -33,6 +35,15 @@ const HomePage = ({ data }: AnswerProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!value) {
+      return toast({
+        title: "Please enter a question.",
+        status: "error",
+        position: "top",
+      });
+    }
+
     setLoading(true);
 
     const result = await fetchAnswers(value);

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { AnswerProps } from "../../types";
 
-const Answer = ({ data }: AnswerProps) => {
+const Answer = ({ data }: { data: AnswerProps }) => {
   return (
     <Box>
       <Box
@@ -29,7 +29,7 @@ const Answer = ({ data }: AnswerProps) => {
             width="full"
             objectFit="cover"
             src={data?.image}
-            alt="Question"
+            alt="Answer Image"
           />
         </Box>
 

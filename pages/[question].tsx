@@ -6,7 +6,7 @@ import { AnswerProps } from "../components/HomePage/types";
 import { Layout } from "../components/Layout";
 import { fetchAnswers } from "../utils/apollo-client";
 
-const Question: NextPage = ({ data }: AnswerProps) => {
+const Question: NextPage<{ data: AnswerProps }> = ({ data }) => {
   const { t } = useTranslation("common");
 
   return (
