@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { RestLink } from "apollo-link-rest";
 import { gql } from "@apollo/client";
 
-const MUTATION = gql`
+export const FETCH_ANSWERS = gql`
   fragment QuestionInput on REST {
     query: String
   }
@@ -31,21 +31,20 @@ const restLink = new RestLink({
 // Setup your client
 const client = new ApolloClient({
   link: restLink,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Answer: {
+        keyFields: ["image", "url"],
+      },
+    },
+  }),
 });
 
 export const fetchAnswers = async (query: string) => {
   const res = await client.mutate({
     fetchPolicy: "network-only",
     variables: { input: { query } },
-    mutation: MUTATION,
-    update: (cache, { data }) => {
-      cache.writeQuery({
-        query: MUTATION,
-        data: data,
-        variables: { input: { query } },
-      });
-    },
+    mutation: FETCH_ANSWERS,
   });
 
   return res;

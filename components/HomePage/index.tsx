@@ -15,13 +15,15 @@ import {
 import Answer from "./_partials/Answer";
 import { Search2Icon } from "@chakra-ui/icons";
 import { AnswerProps } from "./types";
-import { fetchAnswers } from "../../utils/apollo-client";
+import { FETCH_ANSWERS } from "../../utils/apollo-client";
 import { useTranslation } from "next-i18next";
+import { useMutation } from "@apollo/client";
 
 const HomePage = ({ data }: { data?: AnswerProps }) => {
   const [value, setValue] = useState("");
   const [result, setResult] = useState<AnswerProps>();
-  const [loading, setLoading] = useState(false);
+
+  const [mutateFn, { loading, error }] = useMutation(FETCH_ANSWERS);
 
   const { t } = useTranslation("common");
   const toast = useToast();
@@ -31,7 +33,16 @@ const HomePage = ({ data }: { data?: AnswerProps }) => {
       setValue(data.question);
       setResult(data);
     }
-  }, [data]);
+
+    if (error) {
+      toast({
+        title: error.message,
+        status: "error",
+        position: "top",
+      });
+      console.log(error);
+    }
+  }, [error, data, toast]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,11 +55,10 @@ const HomePage = ({ data }: { data?: AnswerProps }) => {
       });
     }
 
-    setLoading(true);
+    const result = await mutateFn({
+      variables: { input: { query: value } },
+    });
 
-    const result = await fetchAnswers(value);
-
-    setLoading(false);
     setResult({ question: value, ...result?.data?.askMe });
   };
 
