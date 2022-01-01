@@ -42,7 +42,6 @@ const client = new ApolloClient({
 
 export const fetchAnswers = async (query: string) => {
   const res = await client.mutate({
-    fetchPolicy: "network-only",
     variables: { input: { query } },
     mutation: FETCH_ANSWERS,
   });
