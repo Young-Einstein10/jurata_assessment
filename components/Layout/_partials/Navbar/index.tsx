@@ -6,7 +6,7 @@ import LangSwitcher from "../LangSwitcher";
 const Navbar = () => {
   return (
     <Box as="header" bgColor="brand" color="white">
-      <Container maxW="container.lg">
+      <Container maxW="container.lg" px={{ base: 4, sm: 6 }}>
         <Flex
           as="nav"
           py="1.5rem"

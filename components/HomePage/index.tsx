@@ -63,15 +63,17 @@ const HomePage = ({ data }: { data?: AnswerProps }) => {
   };
 
   return (
-    <Container maxW={"3xl"}>
+    <Container maxW="3xl">
       <Stack
         as={Box}
-        textAlign={"center"}
+        textAlign="center"
         spacing={{ base: 8, md: 14 }}
         py={{ base: 32, md: 36 }}
+        px={{ sm: 6 }}
       >
         <Heading
           as="h1"
+          color="black"
           lineHeight="1.5"
           fontWeight={600}
           fontSize={{ base: "xl", sm: "2xl", md: "4xl" }}

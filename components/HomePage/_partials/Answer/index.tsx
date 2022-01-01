@@ -21,7 +21,7 @@ const Answer = ({ data }: { data: AnswerProps }) => {
         pos="relative"
         zIndex={1}
       >
-        <Box rounded={"lg"} pos={"relative"}>
+        <Box rounded="lg" pos="relative">
           <Image
             rounded="lg"
             mx="auto"
@@ -34,11 +34,11 @@ const Answer = ({ data }: { data: AnswerProps }) => {
         </Box>
 
         <Box pt={10} textAlign="justify">
-          <Heading fontSize="xl" mb={4} fontFamily="body" fontWeight={500}>
+          <Heading color="black" fontSize="xl" mb={4} fontFamily="body">
             <em>{data?.question && `Q: ${data?.question}?`}</em>
           </Heading>
 
-          <Text color="gray.500" mb={4} fontSize="sm" textTransform="uppercase">
+          <Text mb={4} fontSize="md">
             {data?.answer}
           </Text>
 
