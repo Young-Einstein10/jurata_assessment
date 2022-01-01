@@ -38,7 +38,7 @@ NEXT_PUBLIC_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
 yarn dev or npm run dev
 ```
 
-- Open [http://localhost:3000](http://localhost:3000) in your browser and type in aby question you have in the search bar.
+- Open [http://localhost:3000](http://localhost:3000) in your browser and type in any question you have in the search bar.
 
 ![AskMe1](public/askme1.png)
 
